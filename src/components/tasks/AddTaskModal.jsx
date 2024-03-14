@@ -2,9 +2,14 @@ import { useForm } from "react-hook-form";
 import Modal from "../ui/Modal";
 
 const AddTaskModal = ({ isOpen, setIsOpen }) => {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, reset } = useForm()
+    const close = () => {
+        reset()
+        setIsOpen(false)
+    }
     const onSubmit = (data) => {
         console.log(data)
+        close()
     }
     return (
         <Modal isOpen={isOpen} setIsOpen={setIsOpen} title={"Add your task"}>
@@ -26,7 +31,7 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
                     <label htmlFor="title" className="">
                         Description
                     </label>
-                    <textarea name="description" id="" cols="20" rows="5" className="w-full rounded-lg"></textarea>
+                    <textarea name="description" id="" cols="20" rows="5" className="w-full rounded-lg" {...register('description')}></textarea>
                 </div>
                 <div>
                     <label htmlFor="title" className="">
@@ -52,7 +57,12 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
                     </select>
                 </div>
 
-                <button type="submit"> submit</button>
+                <div className="flex gap-4 w-full justify-end mt-10">
+                    <button
+                        onClick={close}
+                        className="p-2 bg-red-400 rounded-lg font-bold text-black" >Close</button>
+                    <button type="submit" className="p-2 bg-blue-300 rounded-lg font-bold text-black"> submit</button>
+                </div>
             </form>
         </Modal>
     );
