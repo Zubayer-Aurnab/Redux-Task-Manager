@@ -1,5 +1,5 @@
 import { ArrowRightIcon, TrashIcon } from '@heroicons/react/24/outline';
-import Model from '../ui/Model';
+
 
 const TaskCard = () => {
   const task = {
@@ -38,7 +38,7 @@ const TaskCard = () => {
           >
             <ArrowRightIcon className="h-5 w-5 text-primary" />
           </button>
-          <Model />
+      
         </div>
       </div>
     </div>
