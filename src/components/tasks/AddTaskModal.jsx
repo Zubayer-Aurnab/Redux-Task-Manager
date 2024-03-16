@@ -1,14 +1,17 @@
 import { useForm } from "react-hook-form";
 import Modal from "../ui/Modal";
+import { useDispatch } from "react-redux";
+import { addTask } from "../../redux/features/taskes/taskesSlice";
 
 const AddTaskModal = ({ isOpen, setIsOpen }) => {
+    const dispatch = useDispatch()
     const { register, handleSubmit, reset } = useForm()
     const close = () => {
         reset()
         setIsOpen(false)
     }
     const onSubmit = (data) => {
-        console.log(data)
+        dispatch(addTask(data))
         close()
     }
     return (
@@ -54,6 +57,17 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
                         <option value=" nejuko">Nejuko</option>
                         <option value=" mujan">Mujan</option>
                         <option value=" gojo">Gojo</option>
+                    </select>
+                </div>
+                <div className="">
+                    <label htmlFor="priority" className="">
+                        Priority
+                    </label>
+                    <select className="w-full rounded-lg" name="" id="" {...register("priority")}>
+                        <option value="high">High </option>
+                        <option value=" medium">Medium</option>
+                        <option value=" low">Low</option>
+
                     </select>
                 </div>
 
