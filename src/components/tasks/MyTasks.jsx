@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 const MyTasks = () => {
 
   const { tasks } = useSelector((state) => state.taskSlice)
-  console.log(tasks)
+  // console.log(tasks)
   return (
     <div>
       <h1 className="text-xl my-3">My Tasks</h1>
