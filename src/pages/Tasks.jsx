@@ -3,13 +3,16 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import AddTaskModal from '../components/tasks/AddTaskModal';
 import TaskCard from '../components/tasks/TaskCard';
+import MyTasks from '../components/tasks/MyTasks';
 
 const Tasks = () => {
   let [isOpen, setIsOpen] = useState(false)
   const { tasks } = useSelector((state) => state.taskSlice)
   // console.log(tasks)
 
-
+  const pendingTasks = tasks.filter(item => item.status === 'pending')
+  const runningTask = tasks.filter(item => item.status === 'running')
+  const doneTasks = tasks.filter(item => item.status === 'done')
 
   return (
     <div className="h-screen grid grid-cols-12">
@@ -43,11 +46,11 @@ const Tasks = () => {
             <div className="flex sticky top-0 justify-between bg-[#D3DDF9] p-5 rounded-md mb-3">
               <h1>Up Next</h1>
               <p className="bg-primary text-white w-6 h-6 grid place-content-center rounded-md">
-                0
+                {pendingTasks.length}
               </p>
             </div>
             <div className="space-y-3">
-              {tasks.map((item) => (
+              {pendingTasks.map((item) => (
                 <TaskCard key={item.id} task={item} />
               ))}
             </div>
@@ -56,11 +59,11 @@ const Tasks = () => {
             <div className="flex sticky top-0 justify-between bg-[#D3DDF9] p-5 rounded-md mb-3">
               <h1>In Progress</h1>
               <p className="bg-primary text-white w-6 h-6 grid place-content-center rounded-md">
-                0
+                {runningTask.length}
               </p>
             </div>
             <div className="space-y-3">
-              {tasks.map((item) => (
+              {runningTask.map((item) => (
                 <TaskCard key={item.id} task={item} />
               ))}
             </div>
@@ -69,18 +72,21 @@ const Tasks = () => {
             <div className="flex sticky top-0 justify-between bg-[#D3DDF9] p-5 rounded-md mb-3">
               <h1>Done</h1>
               <p className="bg-primary text-white w-6 h-6 grid place-content-center rounded-md">
-                0
+                {doneTasks.length}
               </p>
             </div>
             <div className="space-y-3">
-              {tasks.map((item) => (
+              {doneTasks.map((item) => (
                 <TaskCard key={item.id} task={item} />
               ))}
             </div>
           </div>
         </div>
       </div>
-      {/* <div className="col-span-3 border-l-2 border-secondary/20 px-10 pt-10">
+
+      {/* ////////////////////////////////////////////////////////////////// */}
+      
+      <div className="col-span-3 border-l-2 border-secondary/20 px-10 pt-10">
         <div>
           <h1 className="text-xl">Members</h1>
           <div className="flex gap-3 mt-3">
@@ -122,7 +128,7 @@ const Tasks = () => {
           </div>
         </div>
         <MyTasks />
-      </div> */}
+      </div>
     </div>
   );
 };
