@@ -51,12 +51,12 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
                     <label htmlFor="title" className="">
                         Assign to
                     </label>
-                    <select className="w-full rounded-lg" name="" id="" {...register("assign-to")}>
+                    <select className="w-full rounded-lg" name="" id="" {...register("assign_to")}>
                         <option value="iron man ">Iron man </option>
-                        <option value=" Sukuna">Sukuna</option>
-                        <option value=" nejuko">Nejuko</option>
-                        <option value=" mujan">Mujan</option>
-                        <option value=" gojo">Gojo</option>
+                        <option value="sukuna">Sukuna</option>
+                        <option value="nejuko">Nejuko</option>
+                        <option value="mujan">Mujan</option>
+                        <option value="gojo">Gojo</option>
                     </select>
                 </div>
                 <div className="">
