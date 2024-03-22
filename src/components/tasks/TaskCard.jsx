@@ -14,6 +14,7 @@ const TaskCard = ({ task }) => {
   } else {
     updatedStatus = "archived"
   }
+  console.log(task)
   return (
     <div className="bg-secondary/10 rounded-md p-5">
       <h1

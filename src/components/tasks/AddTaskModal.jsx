@@ -65,8 +65,8 @@ const AddTaskModal = ({ isOpen, setIsOpen }) => {
                     </label>
                     <select className="w-full rounded-lg" name="" id="" {...register("priority")}>
                         <option value="high">High </option>
-                        <option value=" medium">Medium</option>
-                        <option value=" low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
 
                     </select>
                 </div>
